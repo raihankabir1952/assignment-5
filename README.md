@@ -51,3 +51,9 @@ I used it to show a message when no technology is selected.
 {selectedTech.length === 0 && (
   <p>No technologies selected.</p>
 )}
+```
+### 7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
+
+We pass data from parent to child using props.
+
+A child can send something back by calling a function passed from the parent through props.
