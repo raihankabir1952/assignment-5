@@ -2,7 +2,7 @@ import myLogoImg from '../assets/logo-text.png'
 
 function Nav() {
   return (
-    <nav className="w-full px-6 py-4 shadow-sm bg-white-200">
+    <nav className="sticky top-0 z-50 w-full bg-blue-200 px-6 py-4 shadow-sm">
       <div className="flex justify-between items-center"> 
         {/* LOGO */}
         <div className="flex-1 flex justify-start font-bold text-xl">
@@ -14,7 +14,7 @@ function Nav() {
           <a href="#" className="hover:text-blue-600  text-pink-700">Home</a>
           <a href="#" className="hover:text-blue-600">technologies</a>
           <a href="#" className="hover:text-blue-600">Projects</a>
-          <a href="#" className="hover:text-blue-600">Contact</a>
+          <a href="./Footer.tsx" className="hover:text-blue-600">Contact</a>
         </div>
         
         {/* button */}
