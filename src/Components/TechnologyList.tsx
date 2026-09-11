@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import type { ITechnology } from "../types/technology";
 import TechnologyCard from "./TechnologyCard";
+import YourStack from "./YourStack";
+import { toast } from "react-toastify";
 
 function TechnologyList() {
 
     const [technologies, setTechnologies] = useState<ITechnology[]>([]);
+    const [stack, setStack] = useState<ITechnology[]>([])
 
     useEffect(() => {
 
@@ -21,55 +24,77 @@ function TechnologyList() {
 
     }, []);
 
-return (
-    <div className="mx-auto w-[90%] max-w-7xl py-10">
+    //add
+    const handleAddToStack = (technology: ITechnology) => {
+        const alreadyExists = stack.some((item) =>
+            item.id === technology.id);
 
-        <button className="mb-8 text-3xl font-bold text-gray-800">
-            Available Technologies : {technologies.length} 
-        </button><br />
+        if (alreadyExists) {
+            return;
+        }
+        setStack((previousStack) => [
+            ...previousStack,
+            technology
+        ])
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px]">
-
-            {/* Technology Cards */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {
-                    technologies.map((tech) => (
-                        <TechnologyCard
-                            key={tech.id}
-                            technology={tech}
-                        />
-                    ))
-                }
-            </div>
+        toast.success(`${technology.name} added to your stack!`)
+    };
 
 
-            {/* Your Stack */}
-            <div className="h-fit rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+    //remove
+    const handleRemoveFromStack = (technologyId: string) => {
 
-                <h2 className="text-xl font-bold text-gray-800">
-                    Your Stack
-                </h2>
+        const removedTechnology = stack.find(
+            (technology) => technology.id === technologyId
+        );
 
-                <p className="mt-2 text-sm text-gray-500">
-                    No technologies select yet
-                </p>
+        setStack((previousStack) =>
+            previousStack.filter(
+                (technology) => technology.id !== technologyId
+            )
+        );
 
-                <div className="my-5 border-t border-gray-100"></div>
+        if (removedTechnology) {
+            toast.success(
+                `${removedTechnology.name} removed from your stack!`
+            );
+        }
+    };
 
-                <div className="rounded-xl bg-gray-50 px-4 py-6 text-center">
+    return (
+        <div className="mx-auto w-[90%] max-w-7xl py-10">
 
-                    <p className="text-sm font-medium text-gray-500">
-                        Your stack is empty
-                    </p>
+            <button className="mb-8 text-3xl font-bold text-gray-800">
+                Available Technologies : {technologies.length}
+            </button><br />
 
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px]">
+
+                {/* Technology Cards */}
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    {
+                        technologies.map((tech) => (
+                            <TechnologyCard
+                                key={tech.id}
+                                technology={tech}
+                                onAddToStack={handleAddToStack}
+                                isAdded={stack.some((item) => item.id === tech.id)}
+                            />
+                        ))
+                    }
                 </div>
+
+
+                {/* Your Stack */}
+                <YourStack
+                    stack={stack}
+                    onRemove={handleRemoveFromStack}
+                />
 
             </div>
 
         </div>
-
-    </div>
-);
+    );
 }
 
 export default TechnologyList;
