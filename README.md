@@ -12,8 +12,10 @@ Tech Explorer is a modern web application where users can explore different tech
 ## ✨ Features
 
 - 🔍 Explore different technologies with detailed information.
-- 🗂️ Filter technologies by category such as Frontend, Backend, Database, and DevOps.
+- 🗂️ Add different type of stack and also remove from stack list with show toat for both add and remove stack from stack list.
 - ⭐ View technology ratings, difficulty levels, icons, and badges.
+- ©️ Prevent duplicate stack add in the stack list.
+- 🔃 Also show loading before data show in ui.
 
 ## 🧠 React Questions & Answers
 
