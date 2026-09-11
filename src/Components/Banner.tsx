@@ -21,7 +21,7 @@ function Banner() {
           
           {/* Buttons*/}
           <div className="flex items-center gap-4 mt-4">
-            <button className="bg-[#e21b79] text-white px-5 py-2.5 rounded text-sm font-semibold shadow-sm hover:bg-[#c11463] transition-colors">
+            <button className="bg-gradient-to-r from-[#ff5b35] to-[#e62382] text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:opacity-90 transition-opacity">
               Explore Technologies
             </button>
             <button className="border border-gray-200 text-gray-600 px-6 py-2.5 rounded text-sm font-medium hover:bg-gray-50 transition-colors bg-white">

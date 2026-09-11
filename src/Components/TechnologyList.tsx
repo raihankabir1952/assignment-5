@@ -63,6 +63,15 @@ function TechnologyList() {
 
     return (
         <div className="mx-auto w-[90%] max-w-7xl py-10">
+            <div className="text-left mb-10">
+                <h1 className="text-3xl font-black text-[#0f172a] tracking-tight">
+                    Explore the <span className="text-[#d946ef]">Technologies</span>
+                </h1>
+                <p className="text-gray-400 text-sm mt-1.5 font-normal">
+                    Pick one technology per category to build your ideal stack.
+                </p>
+            </div>
+
 
             <button className="mb-8 text-3xl font-bold text-gray-800">
                 Available Technologies : {technologies.length}
