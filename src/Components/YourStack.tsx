@@ -50,6 +50,9 @@ function YourStack({ stack, onRemove }: YourStackProps) {
                                         <p className="text-xs text-gray-500">
                                             {technology.category}
                                         </p>
+                                        <strong>
+                                            ⭐{technology.rating}
+                                        </strong>
                                     </div>
 
                                 </div>

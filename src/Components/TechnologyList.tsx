@@ -8,20 +8,25 @@ function TechnologyList() {
 
     const [technologies, setTechnologies] = useState<ITechnology[]>([]);
     const [stack, setStack] = useState<ITechnology[]>([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        setLoading(true);
 
-        fetch("/data.json")
-            .then((response) => {
-                return response.json();
-            })
-            .then((data: ITechnology[]) => {
-                setTechnologies(data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
+        setTimeout(() => {
+            fetch("/data.json")
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data: ITechnology[]) => {
+                    setTechnologies(data);
+                    setLoading(false);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        }, 1000);
     }, []);
 
     //add
@@ -81,7 +86,13 @@ function TechnologyList() {
 
                 {/* Technology Cards */}
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                    {
+                    {loading ? (
+                        <div className="col-span-full flex justify-center py-20">
+                            <p className="text-xl font-semibold text-gray-500">
+                                Loading technologies...
+                            </p>
+                        </div>
+                    ) : (
                         technologies.map((tech) => (
                             <TechnologyCard
                                 key={tech.id}
@@ -90,7 +101,7 @@ function TechnologyList() {
                                 isAdded={stack.some((item) => item.id === tech.id)}
                             />
                         ))
-                    }
+                    )}
                 </div>
 
 
