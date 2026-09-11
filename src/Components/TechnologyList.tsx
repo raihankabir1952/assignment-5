@@ -66,6 +66,19 @@ function TechnologyList() {
         }
     };
 
+
+    //remove all
+    const handleRemoveAll = () => {
+    if (stack.length === 0) {
+        return;
+    }
+
+    setStack([]);
+
+    toast.success("All technologies removed from your stack!");
+};
+
+
     return (
         <div className="mx-auto w-[90%] max-w-7xl py-10">
             <div className="text-left mb-10">
@@ -109,6 +122,7 @@ function TechnologyList() {
                 <YourStack
                     stack={stack}
                     onRemove={handleRemoveFromStack}
+                    onRemoveAll={handleRemoveAll}
                 />
 
             </div>
