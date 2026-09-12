@@ -60,3 +60,10 @@ I used it to show a message when no technology is selected.
 We pass data from parent to child using props.
 
 A child can send something back by calling a function passed from the parent through props.
+
+### 🔗 Live Site & GitHub
+
+[![Live Site](https://img.shields.io/badge/Live%20Site-Netlify-00C7B7?logo=netlify\&logoColor=white)](https://keen-bavarois-b71103.netlify.app/)
+
+[![GitHub](https://img.shields.io/badge/GitHub-Assignment--5-181717?logo=github\&logoColor=white)](https://github.com/raihankabir1952/assignment-5)
+
